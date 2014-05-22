@@ -2546,7 +2546,7 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 		
 		// Genesis block
-        const char* pszTimestamp = "5/22/2014 New planet-hunting camera produces best-ever image of an alien planet, says Stanford physicist";
+        const char* pszTimestamp = "New planet hunting camera produces best ever image of an alien planet, says Stanford physicist";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2560,9 +2560,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1400780164;
+        block.nTime    = 1400788111;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 22960;
+        block.nNonce   = 956779;
 
         //// debug print
         block.print();
@@ -2571,7 +2571,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
 
-        assert(block.hashMerkleRoot == uint256("0x4430cfdff3cd4c8b376d00a8a431ad8980f7c3fba301d1423988d081f2dd8532"));
+        assert(block.hashMerkleRoot == uint256("0x4d54754adef66a9890e7e11ec38299926af519c4ea9204e5d5db8cbc6abe0eee"));
 		assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
 
         // Start new block file
