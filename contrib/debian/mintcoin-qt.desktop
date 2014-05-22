@@ -1,10 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=MintCoin
-Comment=MintCoin P2P Cryptocurrency
-Comment[fr]=MintCoin, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=MintCoin, eşten eşe kriptografik sanal para birimi
-Comment[es]=MintCoin, una criptomoneda P2P
+Name=SaturnCoin
+Comment=SaturnCoin P2P Cryptocurrency
+Comment[fr]=SaturnCoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=SaturnCoin, eşten eşe kriptografik sanal para birimi
+Comment[es]=SaturnCoin, una criptomoneda P2P
 Exec=/usr/bin/mintcoin-qt
 Terminal=false
 Type=Application
