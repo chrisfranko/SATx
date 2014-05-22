@@ -45,7 +45,7 @@ unsigned int nStakeMinAge = 60 * 60 * 24 * 10;	// minimum age for coin age: 10d
 unsigned int nStakeMaxAge = 60 * 60 * 24 * 20;	// stake age of full weight: 20d
 unsigned int nStakeTargetSpacing = 20;			// 30 sec block spacing
 
-int64 nChainStartTime = 1400780164;
+int64 nChainStartTime = 1400788111;
 int nCoinbaseMaturity = 30;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2546,8 +2546,9 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 		
 		// Genesis block
-        const char* pszTimestamp = "New planet hunting camera produces best ever image of an alien planet, says Stanford physicist";
+        const char* pszTimestamp = "New planet hunting camera produces bestever image of an alien planet says Stanford physicist";
         CTransaction txNew;
+		txNew.nTime = nChainStartTime;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
