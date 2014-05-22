@@ -4282,7 +4282,7 @@ static int nLimitProcessors = -1;
 
 void BitcoinMiner(CWallet *pwallet, bool fProofOfStake)
 {
-    void *scratchbuf = 131072 + 63;
+    void *scratchbuf = scrypt_buffer_alloc();
 
     printf("CPUMiner started for proof-of-%s\n", fProofOfStake? "stake" : "work");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
