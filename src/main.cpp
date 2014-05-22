@@ -45,7 +45,7 @@ unsigned int nStakeMinAge = 60 * 60 * 24 * 10;	// minimum age for coin age: 10d
 unsigned int nStakeMaxAge = 60 * 60 * 24 * 20;	// stake age of full weight: 20d
 unsigned int nStakeTargetSpacing = 20;			// 30 sec block spacing
 
-int64 nChainStartTime = 1391393673;
+int64 nChainStartTime = 1400780164;
 int nCoinbaseMaturity = 30;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2571,7 +2571,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
 
-        assert(block.hashMerkleRoot == uint256("4430cfdff3cd4c8b376d00a8a431ad8980f7c3fba301d1423988d081f2dd8532"));
+        assert(block.hashMerkleRoot == uint256("0x4430cfdff3cd4c8b376d00a8a431ad8980f7c3fba301d1423988d081f2dd8532"));
 		assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
 
         // Start new block file
@@ -4282,7 +4282,7 @@ static int nLimitProcessors = -1;
 
 void BitcoinMiner(CWallet *pwallet, bool fProofOfStake)
 {
-    void *scratchbuf = scrypt_buffer_alloc();
+    void *scratchbuf = 131072 + 63;
 
     printf("CPUMiner started for proof-of-%s\n", fProofOfStake? "stake" : "work");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
