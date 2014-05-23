@@ -2545,25 +2545,38 @@ bool LoadBlockIndex(bool fAllowNew)
         if (!fAllowNew)
             return false;
 		
-		// Genesis block
+		 // Genesis block
         const char* pszTimestamp = "New planet hunting camera produces bestever image of an alien planet says Stanford physicist";
         CTransaction txNew;
-		txNew.nTime = nChainStartTime;
+        txNew.nTime = nChainStartTime;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
-        txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
-        
-
+        txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+        txNew.vout[0].SetEmpty();
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1400788111;
-        block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 956779;
+        block.nTime    = 1371910069;
+        block.nBits    = bnProofOfWorkLimit.GetCompact();
+        block.nNonce   = 3858650;
+
+ 	   if (false  && (block.GetHash() != hashGenesisBlock)) {
+
+		// This will figure out a valid hash and Nonce if you're
+		// creating a different genesis block:
+		    uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
+		    while (block.GetHash() > hashTarget)
+		       {
+		           ++block.nNonce;
+		           if (block.nNonce == 0)
+		           {
+		               printf("NONCE WRAPPED, incrementing time");
+		               ++block.nTime;
+		           }
+		       }
+        }
 
         //// debug print
         block.print();
